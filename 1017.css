@@ -1,0 +1,152 @@
+div#formContainer{
+	width:50%;
+	/*透過設定margin，可讓div區塊上下產生間隔，左右置中*/
+	margin:50px auto;
+	background-color:#ddf2ff;
+	
+}
+
+h2#formTitle{
+	text-align:center;
+	padding:20px 0;
+	font-family:helvetica,microsoft jhenghei;
+	/*修正h2預設的margin，以免預設的margin導致格式出錯*/
+	margin:0;
+}
+
+hr{
+	/*hr具有預設的border，這裡做修改*/
+	border:1px solid lightgrey;
+	/*hr具有預設的margin，原始margin為top bottom各8px，left right為auto*/
+	margin:0 auto;
+	/*hr具有預設的width，原始值為100%*/
+	width:80%;
+}
+/*設定元素置中，需要準備容器來放置元素*/
+div#formDiv{
+	padding:10px;
+	/*設定要置中的元素位於容器中間80%之處*/
+	padding-left:10%;
+	padding-right:10%;
+	
+	font-family:microsoft jhenghei;
+	font-size:18px;	
+}
+
+/*設定表單提交按鈕的樣式*/
+button#submitButton{
+	border:none;
+	background-color:DarkTurquoise;
+	/*如何讓button的寬度填滿整個div*/
+	/*width:100%;*/
+	/*修改按鈕內，文字到邊界的裝飾且button的寬度一樣填滿整個div*/
+	padding:10px;
+	padding-left:10%;
+	padding-right:10%;
+	box-sizing:content-box;
+	width:80%;
+	/*設定轉場效果，當滑鼠移到時，按鈕背景色要漸變*/
+	transition:background-color 0.2s;
+	/*按鈕文字大小*/
+	font-size:18px;
+	/*將按鈕的四個角設成圓弧形*/
+	border-radius:10px;
+	/*將按鈕設定成滑鼠移到時，鼠標變成手指*/
+	cursor:pointer;	
+}
+
+button#submitButton:hover{
+	background-color:#00b4b7;
+}
+
+/*設定表單輸入欄位之樣式*/
+.goodAttrLabel{
+	/*如果要對input label span設定width，因該兩個元素預設皆為inline元素，無法設定width與height，故需要將這兩個元素設成inline-block*/
+	display:inline-block;
+	width:35%;
+	height:30px;
+	
+	font-family:microsoft jhenghei;
+	text-align:center;
+
+}
+.goodValueInput{
+	display:inline-block;
+	/*原本要設成65%的，偷吃步才改成60%*/
+	width:60%;
+	height:30px;
+	border:1px solid lightgrey;
+	border-radius:5px;
+}
+
+/*設定是否需運費的checkbox*/
+input[type=checkbox]{
+	display:none;
+	/*把 display 設定成 none 不會保留元素原本該顯示的空間*/
+}
+/*設定和checkbox相鄰的label*/
+input[type='checkbox']+label{
+	/*設定寬度，label的文字與客製化checkbox要放置於這個寬內，故寬度要能容納文字與客製化checkbox*/
+	display:inline-block;	
+	width:30%;
+	height:30px;
+	font-family:microsoft jhenghei;
+	font-size:18px;
+	/*解決文字與checkbox高度落差問題*/
+	/*vertical-align:middle;這樣失敗*/
+}
+/*和checkbox相鄰的label，前方要設定客製化checkbox*/
+/*前方的客製化元素用以下選擇器表示*/
+input[type='checkbox']+label::before{
+	/*客製化元素必須要有content屬性，即使沒有要顯示文字也是*/
+	content:"";
+	/*客製化元素預設是inline元素，所以如果要設定客製化元素的width height，就要將元素改成inline-block元素*/
+	display:inline-block;
+	width:20px;
+	height:20px;
+	border:1px solid lightGrey;
+	background-color:white;
+	/*解決文字與checkbox高度落差問題*/
+	vertical-align:middle;
+}
+/*只要點擊label，對應的checkbox就會變成checked。然後要讓客製化checkbox被填滿*/
+input[type='checkbox']:checked+label::before{
+	/*設定客製化元素的border內要有勾勾*/
+	background: url(https://dl.dropboxusercontent.com/u/63402326/tick.png) no-repeat;
+	/*設定勾勾要填滿整個客製化元素的border內，也就是background要能縮放到填滿整個background區塊*/
+	background-size:100% 100%;
+}
+
+.textAreaInput{
+	display:inline-block;
+	width:60%;
+	height:100px;
+	border:1px solid lightGrey;
+	border-radius:5px;
+	/*讓textarea的垂直置中方式改成以行內水平方向中線為準*/
+	vertical-align:middle;	
+}
+
+input[type='radio']{
+	display:none;
+}
+.radioSpan{
+	display:inline-block;
+	width:20px;
+	height:20px;
+	border:1px solid lightGrey;
+	border-radius:100%;
+	background-color:white;
+}
+/*設定span元素內被填充顏色，可設定span的content被填充顏色，作法是在content內加入偽元素，透過偽元素設定顏色，偽元素可以想成是html的inline元素*/
+input[type='radio']:checked+span::after{
+	/*偽元素如非文字，就必須宣告為空字串*/
+	content:'';
+	/*偽元素填充content，所以就設定偽元素的背景*/
+	border:3px solid white;
+	border-radius:100%;
+	width:14px;
+	height:14px;
+	display:inline-block;	
+	background-color:LightSeaGreen;
+}
